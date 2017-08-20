@@ -16,16 +16,36 @@ app.get("/", function(req, res) {
 // '/grade' is the path in the URL
 //test URL: http://localhost:3000/grade?mygrades=100,10,90,87,55,65
 app.get("/grade", function(req, res){
+    var responseString = "";
     //splits all values (by comma) using the query property in the request object which automatically pulls the values after /grade?
     //ex: "1,2,3".split(",") => ["1","2","3"]
     var grades = req.query.mygrades.split(",");
     for (var i = 0; i < grades.length; i++) {
         book.addGrade(parseInt(grades[i]));
     }
+    
+    var impossibleGrades = book.collectInvalidGrades();
+    if (impossibleGrades.length > 0){
+        responseString = "There were invalid grades in the GradeBook: ";
+            for (var j=0; j < impossibleGrades.length; j++) {
+                responseString += impossibleGrades[j] + " ";
+        }
+        
+        responseString += "\nRemoving invalid grades from Gradebook...";
+        book.removeInvalidGrades();
+        
+        responseString += "\nRemaining valid grades:\n";
+        var remainingGrades = book.returnGrades();
+            for (var k=0; k<remainingGrades.length; k++) {
+                responseString += (remainingGrades[k]) + "\n";
+        }
+    }
+    
+    
     var average = book.getAverage();
     var letter = book.getLetterGrade();
-    
-    res.send("Average Grade: " + average + ", Final Grade: " + letter);
+
+    res.send(responseString + "\nAverage Grade: " + average + "\nFinal Grade: " + letter);
 });
 
 console.log("Server ready...");

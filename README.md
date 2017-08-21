@@ -1,9 +1,11 @@
 -Simple program to take grades as input and give feedback to either the console (console-program.js) or a web browser (web-program.js)
 
 -For the web application you want to use this format in the URL input:
-http://localhost:3000/grade?mygrades=100,10,90,87,55,65,200,350,-2,78,88
+http://localhost:3000/grade?mygrades=100,10,90,87,55,65,78,88,-250,66,300,25,78,98&name=David Baca
 
-There were invalid grades in the GradeBook: 200 350 -2 
+Here are the grades for 'David Baca'
+
+There were invalid grades in the GradeBook: -250 300 
 Removing invalid grades from Gradebook...
 Remaining valid grades:
 100
@@ -14,8 +16,12 @@ Remaining valid grades:
 65
 78
 88
+66
+25
+78
+98
 
-Average Grade: 71.625
+Average Grade: 70
 Final Grade: C
 
 

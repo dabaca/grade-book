@@ -1,7 +1,7 @@
 -Simple program to take grades as input and give feedback to either the console (console-program.js) or a web browser (web-program.js)
 
 -For the web application you want to use this format in the URL input:
-http://localhost:3000/grade?mygrades=100,10,90,87,55,65,78,88,-250,66,300,25,78,98&name=David Baca
+http://localhost:3000/grade?mygrades=100,10,90,87,85,65,78,88,-2250,76,300,55,78,98,96,77,0,99,100,-35,1000,108&name=David%20Baca&school=UCLA
 
 Here are the grades for 'David Baca'
 

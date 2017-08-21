@@ -11,6 +11,7 @@ app.listen(3000); //hook up to port 3000 on this computer, if there is any conne
 //test URL: http://localhost:3000/grade?mygrades=100,10,90,87,55,65
 app.get("/grade", function(req, res){
     var name = req.query.name;
+    var school = req.query.school;
     var responseString = "";
     //splits all values (by comma) using the query property in the request object which automatically pulls the values after /grade?
     //ex: "1,2,3".split(",") => ["1","2","3"]
@@ -46,7 +47,8 @@ app.get("/grade", function(req, res){
     var average = book.getAverage();
     var letter = book.getLetterGrade();
 
-    res.send("Here are the grades for \'" + name + "\'\n\n" + responseString + "\nAverage Grade: " + average + "\nFinal Grade: " + letter);
+    res.send("Here are the grades for \'" + name + "\' who attends \'" + school + "\'\n\n" + responseString + "\nAverage Grade: " + average + "\nFinal Grade: " + letter);
+    book.reset();
 });
 
 console.log("Server ready...");
